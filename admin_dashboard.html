@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard - PERIMETERsafe{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 40px;">
+    <h1 class="section-title">Admin Dashboard</h1>
+
+    <!-- Messages Section -->
+    <section class="admin-section">
+        <h2 class="section-subtitle">Messages</h2>
+        {% if messages %}
+            <ul class="admin-list">
+                {% for message in messages %}
+                    <li class="message-item">
+                        <strong>{{ message.name }}</strong> ({{ message.email }})<br>
+                        {{ message.message }}<br>
+                        <form method="POST" action="{{ url_for('delete_message', message_id=message.id) }}">
+                            <button type="submit" class="delete-button">Delete</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-content">No messages available.</p>
+        {% endif %}
+    </section>
+
+    <!-- Upload to Gallery -->
+    <section class="admin-section">
+        <h2 class="section-subtitle">Upload Media</h2>
+        <form method="POST" enctype="multipart/form-data" class="upload-form">
+            <input type="file" name="media" required accept="image/*,video/*">
+            <button type="submit">Upload</button>
+        </form>
+    </section>
+
+    <!-- Uploaded Media Preview -->
+    <section class="admin-section">
+        <h2 class="section-subtitle">Uploaded Media</h2>
+        {% if images %}
+            <div class="gallery-grid">
+                {% for image in images %}
+                    <div class="media-card">
+                        {% if image.filename.endswith('.mp4') or image.filename.endswith('.webm') or image.filename.endswith('.ogg') %}
+                            <video controls class="gallery-media">
+                                <source src="{{ url_for('static', filename='gallery_uploads/' + image.filename) }}">
+                                Your browser does not support the video tag.
+                            </video>
+                        {% else %}
+                            <img src="{{ url_for('static', filename='gallery_uploads/' + image.filename) }}"
+                                 alt="Image"
+                                 class="gallery-media">
+                        {% endif %}
+                        <form method="POST" action="{{ url_for('delete_image', image_id=image.id) }}">
+                            <button type="submit" class="delete-button">Delete</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-content">No media uploaded yet.</p>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}

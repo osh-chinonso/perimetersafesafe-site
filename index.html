@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}Home | PERIMETERsafe{% endblock %}
+{% block content %}
+<style>
+    .hero {
+        background: linear-gradient(to right, #000000, #0d0d0d);
+        color: #00bfff;
+        padding: 100px 20px;
+        text-align: center;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        text-shadow: 0 0 10px #00bfff;
+    }
+
+    .hero p {
+        font-size: 1.3rem;
+        margin-top: 10px;
+        color: #cccccc;
+    }
+
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 60px 20px;
+        gap: 30px;
+        background-color: #0a0a0a;
+    }
+
+    .feature-card {
+        background: #111;
+        border: 1px solid #00bfff55;
+        border-radius: 10px;
+        padding: 30px 20px;
+        width: 300px;
+        text-align: center;
+        color: white;
+        box-shadow: 0 0 15px #00bfff22;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 25px #00bfff;
+    }
+
+    .feature-card h3 {
+        color: #00bfff;
+        margin-bottom: 15px;
+        text-shadow: 0 0 5px #00bfff99;
+    }
+
+    .feature-card p {
+        color: #cccccc;
+        font-size: 1rem;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<div class="hero">
+    <h1>Welcome to PERIMETERsafe Security</h1>
+    <p>Above the Limit. Beyond the Threat. We engineer tomorrow’s protection today.</p>
+</div>
+
+<div class="card-container">
+    <div class="feature-card">
+        <h3>Smart Surveillance</h3>
+        <p>Advanced CCTV installations to secure your space with real-time monitoring and alerts.</p>
+    </div>
+    <div class="feature-card">
+        <h3>Solar Integration</h3>
+        <p>Reliable solar solutions for uninterrupted power and sustainable energy.</p>
+    </div>
+    <div class="feature-card">
+        <h3>Automated Gates</h3>
+        <p>Experience comfort and security with our motorized gate systems built for control.</p>
+    </div>
+</div>
+{% endblock %}
