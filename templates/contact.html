@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section style="padding: 60px 20px; text-align: center;">
+    <h1 style="color: #00e6e6; font-size: 2.8rem;">Contact Us</h1>
+    <p style="color: #ccc; font-size: 1.2rem; max-width: 700px; margin: 20px auto;">
+        Got a project or inquiry? Let’s talk security, power, and possibilities. We’re always ready to respond.
+    </p>
+</section>
+
+<section style="max-width: 600px; margin: auto; padding: 20px;">
+    <form method="POST" action="/contact" style="display: flex; flex-direction: column; gap: 15px;">
+        <input type="text" name="name" placeholder="Your Name" required style="padding: 12px; border: none; border-radius: 5px; background-color: #222; color: #fff;">
+        <input type="email" name="email" placeholder="Your Email" required style="padding: 12px; border: none; border-radius: 5px; background-color: #222; color: #fff;">
+        <textarea name="message" rows="5" placeholder="Your Message" required style="padding: 12px; border: none; border-radius: 5px; background-color: #222; color: #fff;"></textarea>
+        <button type="submit" class="btn-glow">Send Message</button>
+    </form>
+</section>
+
+{% endblock %}

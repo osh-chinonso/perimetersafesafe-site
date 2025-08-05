@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-light">Admin Dashboard</h2>
+
+<!-- Upload Image -->
+<form method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label class="form-label text-light">Upload Gallery Image</label>
+        <input type="file" name="image" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+<hr class="text-light">
+
+<!-- Gallery Preview -->
+<h4 class="text-light">Uploaded Gallery Images</h4>
+<div class="row">
+    {% for image in images %}
+    <div class="col-md-3 my-2">
+        <img src="{{ url_for('static', filename='gallery_uploads/' ~ image.filename) }}" class="img-fluid rounded border">
+    </div>
+    {% endfor %}
+</div>
+
+<hr class="text-light">
+
+<!-- Messages -->
+<h4 class="text-light">Messages</h4>
+<ul class="list-group">
+    {% for msg in messages %}
+    <li class="list-group-item d-flex justify-content-between align-items-center {% if not msg.is_read %}list-group-item-warning{% endif %}">
+        <div>
+            <strong>{{ msg.name }}</strong> - {{ msg.email }}<br>
+            {{ msg.message }}
+        </div>
+        <a href="{{ url_for('mark_as_read', message_id=msg.id) }}" class="btn btn-sm btn-success">Mark as Read</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

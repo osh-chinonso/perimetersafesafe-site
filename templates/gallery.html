@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Gallery - PERIMETERsafe{% endblock %}
+
+{% block content %}
+<section style="padding: 40px;">
+    <h2 style="color: #00e6e6; text-align: center;">Gallery</h2>
+
+    {% if images %}
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px;">
+            {% for image in images %}
+                <div style="background-color: #1a1a1a; padding: 10px; border-radius: 8px; max-width: 300px;">
+                    {% if image.filename.endswith('.mp4') or image.filename.endswith('.webm') or image.filename.endswith('.ogg') %}
+                        <video controls style="width: 100%; border-radius: 8px;">
+                            <source src="{{ url_for('static', filename='gallery_uploads/' + image.filename) }}">
+                            Your browser does not support the video tag.
+                        </video>
+                    {% else %}
+                        <img src="{{ url_for('static', filename='gallery_uploads/' + image.filename) }}"
+                             alt="Gallery Image"
+                             style="width: 100%; max-width: 300px; height: auto; border-radius: 8px; object-fit: cover;">
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p style="color: #ccc; text-align: center;">No images uploaded yet.</p>
+    {% endif %}
+</section>
+{% endblock %}
