@@ -1,7 +1,7 @@
-Flask==2.3.3
+Flask==2.3.2
 Flask-MySQLdb==1.0.1
-Flask-Session==0.4.0
-Werkzeug==2.3.7
-gunicorn==21.2.0
+Werkzeug==2.3.6
 Pillow==10.3.0
 python-dotenv==1.0.1
+gunicorn==21.2.0
+mysql-connector-python==8.4.0
