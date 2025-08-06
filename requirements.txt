@@ -1,5 +1,5 @@
 adblockparser==0.7
-apturl==0.5.2
+#apturl==0.5.2
 autocommand==2.2.2
 backports.tarfile==1.2.0
 bcrypt==3.2.0
